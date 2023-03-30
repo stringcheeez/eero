@@ -27,7 +27,6 @@ client.on('guildMemberRemove', (member) => {
   });
 var list = [];
 client.on("guildMemberAdd", async member => {
-    // I don't know what you want to do here, so I'll default to sending a very basic message in chat.
     var channel = member.guild.channels.cache.get('1091122754675290134');
     if (!channel) return console.warn("MEMBER MESSAGE CHANNEL IS MISSING.");
     if (list.includes(member.id)) return;
