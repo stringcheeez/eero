@@ -1,0 +1,16 @@
+{
+  "name": "eero",
+  "version": "1.0.0",
+  "description": "Public Discord moderation/utility bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.8.0"
+  },
+  "type": "module"
+}
