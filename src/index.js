@@ -1,7 +1,7 @@
 import { config } from 'dotenv';
 config();
 import { Client, GatewayIntentBits, ActivityType, EmbedBuilder, Routes, REST, Embed, } from 'discord.js';
-
+import helpCommand from './commands/help.js';
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -49,6 +49,7 @@ const rest = new REST({ version: '10' }).setToken(token);
 client.login(token);
 async function main() {
     const commands = [
+        helpCommand,
     ];
     try {
         console.log('Started refreshing application (/) commands');
@@ -60,3 +61,97 @@ async function main() {
     }
 }
 main();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+client.on('interactionCreate', (interaction) => {
+    if(interaction.commandName === 'help') {
+        const helpEmbed = new EmbedBuilder()
+        .setColor('Blue')
+        .setTitle('EERO Support')
+        .setDescription('Make sure you follow the directions down below, this will guarentee the best support we can give to your needs :grin:')
+        .addFields(
+            { name: `Coming soon`, value: 'coming soon'},
+        )
+        interaction.reply({ embeds: [helpEmbed] })
+    }
+});
