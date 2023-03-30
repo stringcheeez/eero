@@ -122,27 +122,6 @@ main();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 client.on('interactionCreate', (interaction) => {
     if(interaction.commandName === 'help') {
         const helpEmbed = new EmbedBuilder()
