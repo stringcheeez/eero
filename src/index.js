@@ -2,6 +2,7 @@ import { config } from 'dotenv';
 config();
 import { Client, GatewayIntentBits, ActivityType, EmbedBuilder, Routes, REST, Embed, } from 'discord.js';
 import helpCommand from './commands/help.js';
+import msgCommand from './commands/msg.js';
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -50,6 +51,7 @@ client.login(token);
 async function main() {
     const commands = [
         helpCommand,
+        msgCommand,
     ];
     try {
         console.log('Started refreshing application (/) commands');
@@ -61,67 +63,6 @@ async function main() {
     }
 }
 main();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 client.on('interactionCreate', (interaction) => {
     if(interaction.commandName === 'help') {
         const helpEmbed = new EmbedBuilder()
@@ -132,5 +73,19 @@ client.on('interactionCreate', (interaction) => {
             { name: `Coming soon`, value: 'coming soon'},
         )
         interaction.reply({ embeds: [helpEmbed] })
+    }
+    if(interaction.commandName === 'msg') {
+        const user = interaction.options.getMember('user')
+        const message = interaction.options.getString('message')
+        const MSGEmbed = new EmbedBuilder()
+        .setColor('Blue')
+        .setTitle(':white_check_mark:')
+        .setDescription('SENT')
+        interaction.reply({ embeds: [MSGEmbed], ephmeral: true})
+        const msgEmbed = new EmbedBuilder()
+        .setColor('Blue')
+        .setTitle(`From ${interaction.user.username}`)
+        .setDescription(`${message}`)
+        client.users.send(`${user.id}`, { embeds: [msgEmbed]})
     }
 });
