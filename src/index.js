@@ -76,15 +76,14 @@ client.on('interactionCreate', (interaction) => {
     if(interaction.commandName === 'msg') {
         const user = interaction.options.getMember('user')
         const message = interaction.options.getString('message')
-        const MSGEmbed = new EmbedBuilder()
-        .setColor('Blue')
-        .setTitle(':white_check_mark:')
-        .setDescription('SENT')
-        interaction.reply({ embeds: [MSGEmbed], ephmeral: true})
         const msgEmbed = new EmbedBuilder()
         .setColor('Blue')
-        .setTitle(`From ${interaction.user.username}`)
+        .setDescription(`Message has been sent :white_check_mark:`)
+        const dmEmbed = new EmbedBuilder()
+        .setColor('Blue')
+        .setTitle(`**${interaction.user.username}** sent a message`)
         .setDescription(`${message}`)
-        client.users.send(`${user.id}`, { embeds: [msgEmbed]})
+        interaction.reply({ embeds: [msgEmbed]})
+        client.users.send(`${user.id}`, {embeds: [dmEmbed]})
     }
 });

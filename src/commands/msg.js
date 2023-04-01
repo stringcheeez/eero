@@ -1,17 +1,17 @@
-import { SlashCommandBuilder } from 'discord.js';
+import { SlashCommandBuilder, SlashCommandStringOption } from 'discord.js';
 const msgCommand = new SlashCommandBuilder()
 .setName('msg')
-.setDescription('messaging with fun')
-.addUserOption(option => 
+.setDescription('message a user within the server')
+.addUserOption(option =>
     option
     .setName('user')
-    .setDescription('Who are you going to message')
+    .setDescription('the user you are going to message')
     .setRequired(true)
     )
     .addStringOption(option =>
         option
-    .setName('message')
-    .setDescription('Type the message you want to send here')
-    .setRequired(true)
+        .setName('message')
+        .setDescription('type the message you want to send')
+        .setRequired(true)
         )
-        export default msgCommand.toJSON();
+export default msgCommand.toJSON();
