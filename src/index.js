@@ -83,7 +83,7 @@ client.on('interactionCreate', (interaction) => {
         .setColor('Blue')
         .setTitle(`**${interaction.user.username}** sent a message`)
         .setDescription(`${message}`)
-        interaction.reply({ embeds: [msgEmbed]})
+        interaction.reply({ embeds: [msgEmbed], ephemeral: true})
         client.users.send(`${user.id}`, {embeds: [dmEmbed]})
     }
 });
