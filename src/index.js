@@ -3,6 +3,7 @@ config();
 import { Client, GatewayIntentBits, ActivityType, EmbedBuilder, Routes, REST, Embed, } from 'discord.js';
 import helpCommand from './commands/help.js';
 import msgCommand from './commands/msg.js';
+import muteCommand from './commands/mute.js';
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -51,6 +52,7 @@ async function main() {
     const commands = [
         helpCommand,
         msgCommand,
+        muteCommand,
     ];
     try {
         console.log('Started refreshing application (/) commands');
@@ -85,5 +87,20 @@ client.on('interactionCreate', (interaction) => {
         .setDescription(`${message}`)
         interaction.reply({ embeds: [msgEmbed], ephemeral: true})
         client.users.send(`${user.id}`, {embeds: [dmEmbed]})
+    }
+    if(interaction.commandName === 'mute') {
+        const user = interaction.options.getMember('user')
+        const reason = interaction.options.getString('reason')
+        const time = interaction.options.getInteger('duration')
+        user.timeout(time * 60000)
+        const muteEmbed = new EmbedBuilder()
+        .setColor('Blue')
+        .setTitle(`${user} was muted by <@${interaction.user.id}> for $$${time}**m for **${reason}**`)
+        .setTimestamp()
+        interaction.reply({ embeds: [muteEmbed] })
+        const dmEmbed = new EmbedBuilder()
+        .setColor('Blue')
+        .setTitle(`You were muted in **EERO SUPPORT SERVER** by **${interaction.user.username}** for **__${reason}__**`)
+        client.users.send(`${user.id}`, { embeds: [dmEmbed] })
     }
 });
