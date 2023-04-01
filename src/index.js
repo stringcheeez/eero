@@ -95,7 +95,7 @@ client.on('interactionCreate', (interaction) => {
         user.timeout(time * 60000)
         const muteEmbed = new EmbedBuilder()
         .setColor('Blue')
-        .setTitle(`${user} was muted by <@${interaction.user.id}> for $$${time}**m for **${reason}**`)
+        .setDescription(`${user} was muted by <@${interaction.user.id}> for **${time}**m for **${reason}**`)
         .setTimestamp()
         interaction.reply({ embeds: [muteEmbed] })
         const dmEmbed = new EmbedBuilder()
