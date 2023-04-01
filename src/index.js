@@ -19,7 +19,7 @@ const channelId = '1091123488414248961';
 client.on('guildMemberRemove', (member) => {
     const leaveEmbed = new EmbedBuilder()
     .setColor('Blue')
-    .setDescription(`Goodbye <@${member.id}> Thank you for being apart of our community! `)
+    .setDescription(`Goodbye <@${member.id}> Thank you for being a part of our community! `)
     const message = ({ embeds: [leaveEmbed]});
     const channel = member.guild.channels.cache.get(channelId);
     if (channel) {
