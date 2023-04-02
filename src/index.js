@@ -3,7 +3,7 @@ config();
 import { Client, GatewayIntentBits, ActivityType, EmbedBuilder, Routes, REST, Embed, } from 'discord.js';
 import helpCommand from './commands/help.js';
 import msgCommand from './commands/msg.js';
-import muteCommand from './commands/mute.js';
+import muteCommand from './commands/mute.js'; n  
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
