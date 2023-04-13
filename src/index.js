@@ -3,7 +3,7 @@ config();
 import { Client, GatewayIntentBits, ActivityType, EmbedBuilder, Routes, REST, Embed, } from 'discord.js';
 import helpCommand from './commands/help.js';
 import msgCommand from './commands/msg.js';
-import muteCommand from './commands/mute.js'; n  
+import muteCommand from './commands/mute.js'; 
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -102,5 +102,14 @@ client.on('interactionCreate', (interaction) => {
         .setColor('Blue')
         .setTitle(`You were muted in **EERO SUPPORT SERVER** by **${interaction.user.username}** for **__${reason}__**`)
         client.users.send(`${user.id}`, { embeds: [dmEmbed] })
+    }
+    if(interaction.commandName === 'ban') {
+        const user = interaction.options.getMember('user')
+        const reason = interaction.options.getString('reason')
+        const banEmbed = new EmbedBuilder()
+        .setColor('Blue')
+        .setTitle('User was Banned')
+        .setDescription1(`${user} was banned by <@${interaction.user.id}> for ${reason}`)
+        interaction.reply({ embeds: [banEmbed] });
     }
 });
