@@ -103,13 +103,4 @@ client.on('interactionCreate', (interaction) => {
         .setTitle(`You were muted in **EERO SUPPORT SERVER** by **${interaction.user.username}** for **__${reason}__**`)
         client.users.send(`${user.id}`, { embeds: [dmEmbed] })
     }
-    if(interaction.commandName === 'ban') {
-        const user = interaction.options.getMember('user')
-        const reason = interaction.options.getString('reason')
-        const banEmbed = new EmbedBuilder()
-        .setColor('Blue')
-        .setTitle('User was Banned')
-        .setDescription1(`${user} was banned by <@${interaction.user.id}> for ${reason}`)
-        interaction.reply({ embeds: [banEmbed] });
-    }
 });
