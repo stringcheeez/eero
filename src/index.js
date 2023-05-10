@@ -104,3 +104,4 @@ client.on('interactionCreate', (interaction) => {
         client.users.send(`${user.id}`, { embeds: [dmEmbed] })
     }
 });
+//end of the code for now 
