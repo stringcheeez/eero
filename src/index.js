@@ -103,5 +103,6 @@ client.on('interactionCreate', (interaction) => {
         .setTitle(`You were muted in **EERO SUPPORT SERVER** by **${interaction.user.username}** for **__${reason}__**`)
         client.users.send(`${user.id}`, { embeds: [dmEmbed] })
     }
-});
+    });
 //end of the code for now 
+//update i dont have a pc at home to finish lol
